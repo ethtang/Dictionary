@@ -37,6 +37,8 @@ public class Main
       {
         System.out.print("Enter a word: ");
         String w = stringInput.nextLine();
+
+        boolean print = true;
         
         for (int i = dictionary.size()-1; i >= 0; i--)
         {
@@ -44,12 +46,20 @@ public class Main
           {
             dictionary.remove(i);
             System.out.println("Word removed");
-            break;
+            print = false;
+            
+            if (dictionary.size() < 1)
+            {
+              break;
+            }
           }
-
+          
           if (i == 0 && dictionary.get(i).getWord().equals(w) == false)
           {
-            System.out.println("Word not in dictionary");
+            if (print)
+            {
+              System.out.println("Word not in dictionary");
+            }
             break;
           }
         }
